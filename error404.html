@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - The Manas Mandal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(
+                45deg, 
+                #0a0a2e,
+                #1a1a4a,
+                #2c1f4a,
+                #1f364a
+            );
+            background-size: 400% 400%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at center, 
+                    rgba(0,0,0,0) 0%, 
+                    rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+
+        .container {
+            text-align: center;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+            position: relative;
+            width: 600px;
+            height: 150px;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.4));
+        }
+
+        .logo-text {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            fill: url(#textGradient);
+            font-size: 40px;
+            filter: url(#glow);
+        }
+
+        .circle-container {
+            animation: rotate 20s linear infinite;
+            transform-origin: center;
+        }
+
+        .particle {
+            fill: none;
+            stroke: url(#particleGradient);
+            stroke-width: 2;
+            animation: particlePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes particlePulse {
+            0% { stroke-width: 1; opacity: 0.5; }
+            50% { stroke-width: 3; opacity: 1; }
+            100% { stroke-width: 1; opacity: 0.5; }
+        }
+
+        @keyframes pathDraw {
+            0% { stroke-dashoffset: 1000; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .path-animation {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: pathDraw 3s ease forwards;
+        }
+
+        .error-code {
+            font-size: 150px;
+            font-weight: bold;
+            position: relative;
+            animation: glitch 1s linear infinite;
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            margin: 20px 0;
+        }
+
+        .error-text {
+            font-size: 28px;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: 0.5s;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .home-button {
+            padding: 15px 40px;
+            font-size: 20px;
+            background: linear-gradient(45deg, #ff3366, #ff33cc);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: 1s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            animation: buttonShine 3s infinite;
+        }
+
+        .home-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 5px 25px rgba(255, 51, 102, 0.6);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+
+        @keyframes buttonShine {
+            0% { left: -50% }
+            100% { left: 150% }
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                            0.025em 0.04em 0 #fffc00;
+            }
+            15% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                            0.025em 0.04em 0 #fffc00;
+            }
+            16% {
+                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                            -0.05em -0.05em 0 #fffc00;
+            }
+            49% {
+                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+                            -0.05em -0.05em 0 #fffc00;
+            }
+            50% {
+                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                            0 -0.04em 0 #fffc00;
+            }
+            99% {
+                text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+                            0 -0.04em 0 #fffc00;
+            }
+            100% {
+                text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
+                            -0.04em -0.025em 0 #fffc00;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <div class="logo-container">
+            <svg width="600" height="150" viewBox="0 0 600 150">
+                <defs>
+                    <!-- Gradient for text -->
+                    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ff3366;">
+                            <animate attributeName="stop-color" 
+                                    values="#ff3366;#ff33cc;#33ff8c;#ff3366"
+                                    dur="4s" repeatCount="indefinite"/>
+                        </stop>
+                        <stop offset="100%" style="stop-color:#33ff8c;">
+                            <animate attributeName="stop-color"
+                                    values="#33ff8c;#ff3366;#ff33cc;#33ff8c"
+                                    dur="4s" repeatCount="indefinite"/>
+                        </stop>
+                    </linearGradient>
+
+                    <!-- Gradient for particles -->
+                    <linearGradient id="particleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ff3366"/>
+                        <stop offset="50%" style="stop-color:#ff33cc"/>
+                        <stop offset="100%" style="stop-color:#33ff8c"/>
+                    </linearGradient>
+
+                    <!-- Glow effect -->
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+
+                    <!-- Clip path for text mask -->
+                    <clipPath id="textClip">
+                        <text x="300" y="75" text-anchor="middle" class="logo-text">
+                            THE MANAS MANDAL
+                        </text>
+                    </clipPath>
+                </defs>
+
+                <!-- Rotating circle container -->
+                <g class="circle-container">
+                    <!-- Multiple decorative circles -->
+                    <circle cx="300" cy="75" r="60" class="particle" 
+                            transform="rotate(0 300 75)">
+                        <animate attributeName="r" 
+                                 values="60;65;60" 
+                                 dur="2s" 
+                                 repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="300" cy="75" r="50" class="particle" 
+                            transform="rotate(45 300 75)">
+                        <animate attributeName="r" 
+                                 values="50;55;50" 
+                                 dur="2s" 
+                                 repeatCount="indefinite"
+                                 begin="0.5s"/>
+                    </circle>
+                    <circle cx="300" cy="75" r="40" class="particle" 
+                            transform="rotate(90 300 75)">
+                        <animate attributeName="r" 
+                                 values="40;45;40" 
+                                 dur="2s" 
+                                 repeatCount="indefinite"
+                                 begin="1s"/>
+                    </circle>
+                </g>
+
+                <!-- Dynamic lines -->
+                <path d="M150,75 Q300,25 450,75" class="particle path-animation" 
+                      fill="none" stroke-width="2">
+                    <animate attributeName="d" 
+                             values="M150,75 Q300,25 450,75;
+                                     M150,75 Q300,125 450,75;
+                                     M150,75 Q300,25 450,75" 
+                             dur="4s" 
+                             repeatCount="indefinite"/>
+                </path>
+                <path d="M150,75 Q300,125 450,75" class="particle path-animation" 
+                      fill="none" stroke-width="2">
+                    <animate attributeName="d" 
+                             values="M150,75 Q300,125 450,75;
+                                     M150,75 Q300,25 450,75;
+                                     M150,75 Q300,125 450,75" 
+                             dur="4s" 
+                             repeatCount="indefinite"/>
+                </path>
+
+                <!-- Main text with mask -->
+                <g clip-path="url(#textClip)">
+                    <rect x="0" y="0" width="600" height="150" fill="url(#textGradient)">
+                        <animate attributeName="x" 
+                                 values="-600;0;-600" 
+                                 dur="3s" 
+                                 repeatCount="indefinite"/>
+                    </rect>
+                </g>
+
+                <!-- Outline text for extra effect -->
+                <text x="300" y="75" text-anchor="middle" class="logo-text" 
+                      stroke="white" stroke-width="0.5" fill="none">
+                    THE MANAS MANDAL
+                </text>
+
+                <!-- Particle effects -->
+                <g class="particles">
+                    <circle cx="200" cy="75" r="2" fill="#ff3366">
+                        <animate attributeName="cx" 
+                                 values="200;400;200" 
+                                 dur="3s" 
+                                 repeatCount="indefinite"/>
+                        <animate attributeName="cy" 
+                                 values="75;50;75" 
+                                 dur="3s" 
+                                 repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="400" cy="75" r="2" fill="#33ff8c">
+                        <animate attributeName="cx" 
+                                 values="400;200;400" 
+                                 dur="3s" 
+                                 repeatCount="indefinite"/>
+                        <animate attributeName="cy" 
+                                 values="75;100;75" 
+                                 dur="3s" 
+                                 repeatCount="indefinite"/>
+                    </circle>
+                </g>
+            </svg>
+        </div>
+        <div class="error-code">404</div>
+        <div class="error-text">Oops! Page Not Found</div>
+        <button class="home-button" onclick="window.location.href='/'">Go Home</button>
+    </div>
+
+    <script>
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                this.color = `hsl(${Math.random() * 60 + 300}, 70%, 60%)`;
+                this.life = 100;
+                this.maxLife = 100;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life -= 1;
+
+                if (this.size > 0.2) this.size -= 0.1;
+
+                // Enhanced swirl effect
+                this.speedX += Math.sin(this.life * 0.05) * 0.1;
+                this.speedY += Math.cos(this.life * 0.05) * 0.1;
+
+                // Add slight acceleration
+                this.speedX *= 1.01;
+                this.speedY *= 1.01;
+            }
+
+            draw(ctx) {
+                const opacity = this.life / this.maxLife;
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = opacity;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx
